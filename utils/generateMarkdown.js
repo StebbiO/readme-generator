@@ -10,7 +10,7 @@ function renderLicenseBadge(data) {
   } else if (data.license === 'Mozilla') {
     licenseEl = 'https://img.shields.io/badge/License-Mozilla-yellow'
   } else if (data.license === 'ISC') {
-    licenseEl = 'https://img.shields.io/badge/License-Mozilla-yellow'
+    licenseEl = 'https://img.shields.io/badge/License-ISC-orange'
   } else if (!data.license) {
     licenseEl = ''
   }
@@ -18,14 +18,24 @@ function renderLicenseBadge(data) {
 
 // TODO: Create a function that returns the license link
 // If there is no license, return an empty string
-function renderLicenseLink(license) {}
+function renderLicenseLink(data) {
+  if (data.license === 'MIT') {
+  licenseLink = 'https://opensource.org/licenses/MIT'
+} else if (data.license === 'GNU') {
+  licenseLink = 'https://opensource.org/licenses/gpl-license'
+} else if (data.license === 'Apache') {
+  licenseLink = 'https://opensource.org/licenses/Apache-2.0'
+} else if (data.license === 'Mozilla') {
+  licenseLink = 'https://opensource.org/licenses/MPL-2.0'
+} else if (data.license === 'ISC') {
+  licenseLink = 'https://opensource.org/licenses/ISC'
+} else if (!data.license) {
+  licenseLink = ''
+}}
 
-// TODO: Create a function that returns the license section of README
-// If there is no license, return an empty string
-function renderLicenseSection(license) {}
 
 // TODO: Create a function to generate markdown for README
-function generateMarkdown(data, licenseEl) {
+function generateMarkdown(data, licenseEl, licenseLink) {
   return `# ${data.title}
 
   ## License:
@@ -63,6 +73,7 @@ function generateMarkdown(data, licenseEl) {
   ## License
 
   ${data.license}
+  ${licenseLink}
 
   ## Questions
 
